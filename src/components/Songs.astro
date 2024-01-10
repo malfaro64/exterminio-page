@@ -1,0 +1,371 @@
+---
+
+---
+
+<script>
+  const buttons = document.querySelectorAll("button.flex-row");
+
+  let audio: HTMLAudioElement | null = null;
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      // Detener la reproducción si hay un audio en curso
+      const path = `songs\\${button.id}.WAV`;
+      if (audio) {
+        audio.pause();
+        audio = null;
+        return;
+        //  audio.currentTime = 0; // Reiniciar el tiempo de reproducción
+      } else {
+        // Iniciar la reproducción de la nueva canción
+        audio = new Audio(path);
+        audio.play();
+      }
+    });
+  });
+</script>
+
+<div
+  class="text-white flex flex-col mt-10 md:flex-row items-center justify-center"
+>
+  <div class="flex items-center mr-10">
+    <ul>
+      <li>
+        <a
+          href="https://open.spotify.com/intl-es/artist/0HjDiEtqXurQrSNZNaUpHz?si=81sEMpXcQESh_xOVVSgh_A"
+          target="_blank"
+        >
+          <span class="flex items-center"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="48"
+              width="48"
+              viewBox="-33.4974 -55.829 290.3108 334.974"
+              ><path
+                d="M177.707 98.987c-35.992-21.375-95.36-23.34-129.719-12.912-5.519 1.674-11.353-1.44-13.024-6.958-1.672-5.521 1.439-11.352 6.96-13.029 39.443-11.972 105.008-9.66 146.443 14.936 4.964 2.947 6.59 9.356 3.649 14.31-2.944 4.963-9.359 6.6-14.31 3.653m-1.178 31.658c-2.525 4.098-7.883 5.383-11.975 2.867-30.005-18.444-75.762-23.788-111.262-13.012-4.603 1.39-9.466-1.204-10.864-5.8a8.717 8.717 0 015.805-10.856c40.553-12.307 90.968-6.347 125.432 14.833 4.092 2.52 5.38 7.88 2.864 11.968m-13.663 30.404a6.954 6.954 0 01-9.569 2.316c-26.22-16.025-59.223-19.644-98.09-10.766a6.955 6.955 0 01-8.331-5.232 6.95 6.95 0 015.233-8.334c42.533-9.722 79.017-5.538 108.448 12.446a6.96 6.96 0 012.31 9.57M111.656 0C49.992 0 0 49.99 0 111.656c0 61.672 49.992 111.66 111.657 111.66 61.668 0 111.659-49.988 111.659-111.66C223.316 49.991 173.326 0 111.657 0"
+                fill="#1ed660"></path></svg
+            >
+            <span class="ml-2">Spotify</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://music.apple.com/cl/artist/exterminio/1435444476"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="flex items-center"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+              class="social_media_svg"
+              pointer-events="bounding-box"
+              height="48"
+              width="48"
+              ><path
+                d="M395.748 272.046c-.646-64.841 52.88-95.938 55.271-97.483-30.075-44.01-76.925-50.039-93.62-50.736-39.871-4.037-77.798 23.474-98.033 23.474-20.184 0-51.409-22.877-84.476-22.276-43.458.646-83.529 25.269-105.906 64.19-45.152 78.35-11.563 194.42 32.445 257.963 21.504 31.104 47.146 66.038 80.813 64.79 32.421-1.294 44.681-20.979 83.878-20.979 39.196 0 50.215 20.979 84.524 20.335 34.888-.648 56.991-31.699 78.347-62.898 24.694-36.084 34.862-71.019 35.462-72.812-.775-.354-68.031-26.119-68.705-103.568zM331.28 81.761C349.149 60.082 361.21 30.005 357.92 0c-25.739 1.048-56.938 17.145-75.405 38.775-16.57 19.188-31.075 49.813-27.188 79.218 28.734 2.242 58.065-14.602 75.953-36.232z"
+              ></path></svg
+            ><span class="ml-3">Apple Music</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.youtube.com/@ExterminioOp"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="flex items-center"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="48"
+              width="48"
+              viewBox="-35.20005 -41.33325 305.0671 247.9995"
+              ><path
+                d="M229.763 25.817c-2.699-10.162-10.65-18.165-20.748-20.881C190.716 0 117.333 0 117.333 0S43.951 0 25.651 4.936C15.553 7.652 7.6 15.655 4.903 25.817 0 44.236 0 82.667 0 82.667s0 38.429 4.903 56.85C7.6 149.68 15.553 157.681 25.65 160.4c18.3 4.934 91.682 4.934 91.682 4.934s73.383 0 91.682-4.934c10.098-2.718 18.049-10.72 20.748-20.882 4.904-18.421 4.904-56.85 4.904-56.85s0-38.431-4.904-56.85"
+                fill="red"></path><path
+                d="M93.333 117.559l61.333-34.89-61.333-34.894z"
+                fill="#fff"></path></svg
+            ><span class="ml-2">Youtube</span></span
+          >
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.instagram.com/exterminio.op/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="flex items-center"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              style="enable-background:new 0 0 512 512;"
+              version="1.1"
+              viewBox="0 0 512 512"
+              xml:space="preserve"
+              height="48"
+              width="48"
+              ><style type="text/css">
+                .st0 {
+                  fill: url(#SVGID_1_);
+                }
+                .st1 {
+                  fill: url(#SVGID_2_);
+                }
+                .st2 {
+                  fill: #654c9f;
+                }
+              </style><g id="Edges"></g><g id="Symbol"
+                ><g
+                  ><radialGradient
+                    cx="56.3501"
+                    cy="19.2179"
+                    gradientTransform="matrix(0.9986 -5.233596e-02 4.448556e-02 0.8488 -36.9742 443.8014)"
+                    gradientUnits="userSpaceOnUse"
+                    id="SVGID_1_"
+                    r="711.335"
+                    ><stop offset="0" style="stop-color:#FED576"></stop><stop
+                      offset="0.2634"
+                      style="stop-color:#F47133"></stop><stop
+                      offset="0.6091"
+                      style="stop-color:#BC3081"></stop><stop
+                      offset="1"
+                      style="stop-color:#4C63D2"></stop></radialGradient
+                  ><path
+                    class="st0"
+                    d="M96.1,23.2c-16.2,6.3-29.9,14.7-43.6,28.4C38.8,65.2,30.4,79,24.1,95.1c-6.1,15.6-10.2,33.5-11.4,59.7    c-1.2,26.2-1.5,34.6-1.5,101.4s0.3,75.2,1.5,101.4c1.2,26.2,5.4,44.1,11.4,59.7c6.3,16.2,14.7,29.9,28.4,43.6    c13.7,13.7,27.4,22.1,43.6,28.4c15.6,6.1,33.5,10.2,59.7,11.4c26.2,1.2,34.6,1.5,101.4,1.5c66.8,0,75.2-0.3,101.4-1.5    c26.2-1.2,44.1-5.4,59.7-11.4c16.2-6.3,29.9-14.7,43.6-28.4c13.7-13.7,22.1-27.4,28.4-43.6c6.1-15.6,10.2-33.5,11.4-59.7    c1.2-26.2,1.5-34.6,1.5-101.4s-0.3-75.2-1.5-101.4c-1.2-26.2-5.4-44.1-11.4-59.7C484,79,475.6,65.2,462,51.6    c-13.7-13.7-27.4-22.1-43.6-28.4c-15.6-6.1-33.5-10.2-59.7-11.4c-26.2-1.2-34.6-1.5-101.4-1.5s-75.2,0.3-101.4,1.5    C129.6,12.9,111.7,17.1,96.1,23.2z M356.6,56c24,1.1,37,5.1,45.7,8.5c11.5,4.5,19.7,9.8,28.3,18.4c8.6,8.6,13.9,16.8,18.4,28.3    c3.4,8.7,7.4,21.7,8.5,45.7c1.2,25.9,1.4,33.7,1.4,99.4s-0.3,73.5-1.4,99.4c-1.1,24-5.1,37-8.5,45.7c-4.5,11.5-9.8,19.7-18.4,28.3    c-8.6,8.6-16.8,13.9-28.3,18.4c-8.7,3.4-21.7,7.4-45.7,8.5c-25.9,1.2-33.7,1.4-99.4,1.4s-73.5-0.3-99.4-1.4    c-24-1.1-37-5.1-45.7-8.5c-11.5-4.5-19.7-9.8-28.3-18.4c-8.6-8.6-13.9-16.8-18.4-28.3c-3.4-8.7-7.4-21.7-8.5-45.7    c-1.2-25.9-1.4-33.7-1.4-99.4s0.3-73.5,1.4-99.4c1.1-24,5.1-37,8.5-45.7c4.5-11.5,9.8-19.7,18.4-28.3c8.6-8.6,16.8-13.9,28.3-18.4    c8.7-3.4,21.7-7.4,45.7-8.5c25.9-1.2,33.7-1.4,99.4-1.4S330.7,54.8,356.6,56z"
+                  ></path><radialGradient
+                    cx="154.0732"
+                    cy="134.5501"
+                    gradientTransform="matrix(0.9986 -5.233596e-02 4.448556e-02 0.8488 -24.3617 253.2946)"
+                    gradientUnits="userSpaceOnUse"
+                    id="SVGID_2_"
+                    r="365.2801"
+                    ><stop offset="0" style="stop-color:#FED576"></stop><stop
+                      offset="0.2634"
+                      style="stop-color:#F47133"></stop><stop
+                      offset="0.6091"
+                      style="stop-color:#BC3081"></stop><stop
+                      offset="1"
+                      style="stop-color:#4C63D2"></stop></radialGradient
+                  ><path
+                    class="st1"
+                    d="M130.9,256.3c0,69.8,56.6,126.3,126.3,126.3s126.3-56.6,126.3-126.3S327,130,257.2,130    S130.9,186.5,130.9,256.3z M339.2,256.3c0,45.3-36.7,82-82,82s-82-36.7-82-82c0-45.3,36.7-82,82-82S339.2,211,339.2,256.3z"
+                  ></path><circle class="st2" cx="388.6" cy="125" r="29.5"
+                  ></circle></g
+                ></g
+              ></svg
+            ><span class="ml-2">Instagram</span></span
+          >
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- canciones -->
+  <div class="flex items-center">
+    <ul>
+      <li>
+        <button
+          class="flex-row justify-center text-white cursor-pointer hover:bg-slate-700 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium
+        rounded-lg px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2 hover:shadow-lg transition-all duration-200ease-in-out hover:scale-110
+        scale-90 gap-x-2 opacity-70 hover:opacity-100"
+          id="sexyDoll"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-player-play"
+            width="44"
+            height="44"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#2c3e50"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            id="play"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M7 4v16l13 -8z"></path>
+          </svg>
+          <span class="ml-2">Sexy Doll Cosplay</span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="flex-row justify-center text-white cursor-pointer hover:bg-slate-700 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium
+        rounded-lg px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2 hover:shadow-lg transition-all duration-200ease-in-out hover:scale-110
+        scale-90 gap-x-2 opacity-70 hover:opacity-100"
+          id="culturaBasura"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-player-play"
+            width="44"
+            height="44"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#2c3e50"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M7 4v16l13 -8z"></path>
+          </svg>
+          <span class="ml-2">Cultura Basura</span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="flex-row justify-center text-white cursor-pointer hover:bg-slate-700 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium
+        rounded-lg px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2 hover:shadow-lg transition-all duration-200ease-in-out hover:scale-110
+        scale-90 gap-x-2 opacity-70 hover:opacity-100"
+          id="ghostGoblin"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-player-play"
+            width="44"
+            height="44"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#2c3e50"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M7 4v16l13 -8z"></path>
+          </svg>
+          <span class="ml-2">Ghost & Goblins</span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="flex-row justify-center text-white cursor-pointer hover:bg-slate-700 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium
+        rounded-lg px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2 hover:shadow-lg transition-all duration-200ease-in-out hover:scale-110
+        scale-90 gap-x-2 opacity-70 hover:opacity-100"
+          id="isekai"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-player-play"
+            width="44"
+            height="44"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#2c3e50"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M7 4v16l13 -8z"></path>
+          </svg>
+          <span class="ml-2">Isekai</span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="flex-row justify-center text-white cursor-pointer hover:bg-slate-700 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium
+        rounded-lg px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2 hover:shadow-lg transition-all duration-200ease-in-out hover:scale-110
+        scale-90 gap-x-2 opacity-70 hover:opacity-100"
+          id="onlyFans"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-player-play"
+            width="44"
+            height="44"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#2c3e50"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M7 4v16l13 -8z"></path>
+          </svg>
+          <span class="ml-2">Only Fans</span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="flex-row justify-center text-white cursor-pointer hover:bg-slate-700 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium
+        rounded-lg px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2 hover:shadow-lg transition-all duration-200ease-in-out hover:scale-110
+        scale-90 gap-x-2 opacity-70 hover:opacity-100"
+          id="somosGamer"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-player-play"
+            width="44"
+            height="44"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#2c3e50"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M7 4v16l13 -8z"></path>
+          </svg>
+          <span class="ml-2">Somos Gamers</span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="flex-row justify-center text-white cursor-pointer hover:bg-slate-700 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium
+        rounded-lg px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2 hover:shadow-lg transition-all duration-200ease-in-out hover:scale-110
+        scale-90 gap-x-2 opacity-70 hover:opacity-100"
+          id="leyendas"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-player-play"
+            width="44"
+            height="44"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#2c3e50"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M7 4v16l13 -8z"></path>
+          </svg>
+          <span class="ml-2">Leyendas y Mitos</span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="flex-row justify-center text-white cursor-pointer hover:bg-slate-700 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium
+        rounded-lg px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2 hover:shadow-lg transition-all duration-200ease-in-out hover:scale-110
+        scale-90 gap-x-2 opacity-70 hover:opacity-100"
+          id="klulu"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-player-play"
+            width="44"
+            height="44"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#2c3e50"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M7 4v16l13 -8z"></path>
+          </svg>
+          <span class="ml-2">La llamada de Klulu</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
