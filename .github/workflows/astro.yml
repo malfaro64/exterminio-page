@@ -33,6 +33,8 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - name: Clear pnpm store
+        run: rm -rf ~/.pnpm-store
       - name: Checkout
         uses: actions/checkout@v4
       - name: Detect package manager
