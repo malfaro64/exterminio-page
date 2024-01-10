@@ -39,9 +39,11 @@ jobs:
             cache: pnpm
             cache-dependency-path: ${{ env.BUILD_PATH }}/pnpm-lock.yaml
         - name: Install pnpm
-          run: npm install -g pnpm
+          run: curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
         - name: Verify pnpm installation
           run: pnpm --version
+        - name: Check pnpm path
+          run: which pnpm
   build:
     needs: setup
     name: Build
