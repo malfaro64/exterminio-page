@@ -38,24 +38,11 @@ jobs:
         with:
           node-version: "20"
           cache: pnpm
-          cache-dependency-path: ${{ env.BUILD_PATH }}/pnpm-lock.yaml
+          cache-dependency-path: ./pnpm-lock.yaml
       - name: Install pnpm
         run: npm install -g pnpm
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v4
-      - name: Install dependencies
-        run: pnpm install
-        working-directory: ${{ env.BUILD_PATH }}
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Build with Astro
-        run: pnpm run build  # Cambiado para utilizar pnpm directamente
-        working-directory: ${{ env.BUILD_PATH }}
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ${{ env.BUILD_PATH }}/dist
+      - name: Verify pnpm installation
+        run: pnpm --version
 
   deploy:
     environment:
