@@ -2,7 +2,7 @@ name: Build and Deploy Astro Site to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -11,8 +11,8 @@ permissions:
   id-token: write
 
 env:
-  NODE_VERSION: '20' # Puedes cambiar esto a la versión de Node.js que prefieras
-  BUILD_PATH: '.'    # Cambia esto si tu proyecto está en un subdirectorio
+  NODE_VERSION: "20" # Puedes cambiar esto a la versión de Node.js que prefieras
+  BUILD_PATH: "." # Cambia esto si tu proyecto está en un subdirectorio
 
 jobs:
   build-and-deploy:
@@ -24,18 +24,16 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          node-version: "20" # Usa la versión de Node.js que prefieras
 
       - name: Install Dependencies
         run: npm install
-        working-directory: ${{ env.BUILD_PATH }}
 
-      - name: Build Project
+      - name: Build Astro Site
         run: npm run build
-        working-directory: ${{ env.BUILD_PATH }}
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+        uses: JamesIves/github-pages-deploy-action@4.1.3
         with:
-          build-directory: ${{ env.BUILD_PATH }}/dist # Asegúrate de que esta ruta sea la correcta para los archivos de tu sitio construido
+          branch: gh-pages # Asegúrate de que esta sea la rama de GitHub Pages
+          folder: dist # Asegúrate de que esta sea la carpeta donde Astro genera el sitio construido
