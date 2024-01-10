@@ -13,6 +13,7 @@ permissions:
 env:
   NODE_VERSION: '20'
   BUILD_PATH: '.'
+  ARTIFACT_NAME: 'build-artifact' # Nombre del artefacto
 
 jobs:
   build-and-deploy:
@@ -35,7 +36,14 @@ jobs:
         run: npm run build
         working-directory: ${{ env.BUILD_PATH }}
 
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: ${{ env.BUILD_PATH }}/dist # Asegúrate de que esta es la ruta correcta
+
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
         with:
-          build-directory: ${{ env.BUILD_PATH }}/dist
+          artifact_name: ${{ env.ARTIFACT_NAME }}
+          timeout: 1800
