@@ -1,0 +1,56 @@
+---
+interface Props {
+  id: string;
+  nombre?: string;
+}
+
+const { id, nombre } = Astro.props;
+console.log(id);
+console.log(nombre);
+---
+
+<script>
+  const buttons = document.querySelectorAll("button.flex-row");
+
+  let audio: HTMLAudioElement | null = null;
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      // Detener la reproducción si hay un audio en curso
+      const path = `songs\\${button.id}.WAV`;
+      if (audio) {
+        audio.pause();
+        audio = null;
+        return;
+        //  audio.currentTime = 0; // Reiniciar el tiempo de reproducción
+      } else {
+        // Iniciar la reproducción de la nueva canción
+        audio = new Audio(path);
+        audio.play();
+      }
+    });
+  });
+</script>
+<button
+  class="flex-row justify-center text-white cursor-pointer hover:bg-slate-700 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium
+    rounded-lg px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2 hover:shadow-lg transition-all duration-200ease-in-out hover:scale-110
+    scale-90 gap-x-2 opacity-70 hover:opacity-100"
+  id={id}
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="icon icon-tabler icon-tabler-player-play"
+    width="44"
+    height="44"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="#2c3e50"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    id="play"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M7 4v16l13 -8z"></path>
+  </svg>
+  <span class="ml-2">{nombre}</span>
+</button>
