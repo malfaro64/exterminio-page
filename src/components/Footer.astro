@@ -1,17 +1,21 @@
+---
+const baseUrl = import.meta.env.PROD ? "/exterminio-page/" : "/";
+---
+
 <footer class="h-80 relative md:flex-row mt-10">
   <div class="inset-0 flex items-center justify-center flex-col md:flex-row">
     <img
-      src="/img/overPower.jpg"
+      src={`${baseUrl}img/overPower.jpg`}
       alt="MDN"
       class="w-80 h-auto border-8 border-gray-500 pt-30 pb-30"
     />
     <img
-      src="/img/somosGamers.jpg"
+      src={`${baseUrl}img/somosGamers.jpg`}
       alt="MDN"
       class="w-80 h-auto border-8 border-gray-500 pt-30 pb-30"
     />
     <img
-      src="/img/judy.jpg"
+      src={`${baseUrl}img/judy.jpg`}
       alt="MDN"
       class="w-80 h-auto border-8 border-gray-500 pt-30 pb-30"
     />

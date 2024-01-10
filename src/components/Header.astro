@@ -1,12 +1,16 @@
+---
+const baseUrl = import.meta.env.PROD ? "/exterminio-page/" : "/";
+---
+
 <header class="w-full h-80 relative">
   <img
-    src="/img/Portada.png"
+    src={`${baseUrl}img/Portada.png`}
     alt="MDN"
     class="w-full h-80 bg-cover bg-center relative object-none blur-sm"
   />
   <div class="absolute inset-0 flex items-center justify-center">
     <img
-      src="/img/Portada.png"
+      src={`${baseUrl}img/Portada.png`}
       alt="MDN"
       class="w-80 h-auto border-8 border-gray-500 pt-30 pb-30"
     />
