@@ -11,8 +11,8 @@ permissions:
   id-token: write
 
 env:
-  NODE_VERSION: '20' # Versión específica de Node.js
-  BUILD_PATH: '.'   # Ruta del proyecto
+  NODE_VERSION: '20' # Puedes cambiar esto a la versión de Node.js que prefieras
+  BUILD_PATH: '.'    # Cambia esto si tu proyecto está en un subdirectorio
 
 jobs:
   build-and-deploy:
@@ -25,25 +25,17 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-
-      - name: Install pnpm
-        run: |
-          curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
-          echo "$(npm bin -g)" >> $GITHUB_PATH
-
-      - name: Verify pnpm Installation
-        run: pnpm --version
+          cache: 'npm'
 
       - name: Install Dependencies
-        run: pnpm install
+        run: npm install
         working-directory: ${{ env.BUILD_PATH }}
 
       - name: Build Project
-        run: pnpm build
+        run: npm run build
         working-directory: ${{ env.BUILD_PATH }}
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
         with:
-          build-directory: ${{ env.BUILD_PATH }}/dist # Asegúrate de que esta es la ruta correcta de tu proyecto construido
+          build-directory: ${{ env.BUILD_PATH }}/dist # Asegúrate de que esta ruta sea la correcta para los archivos de tu sitio construido
