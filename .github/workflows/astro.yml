@@ -31,6 +31,7 @@ jobs:
 
       - name: Build Astro Site
         run: npm run build
+        working-directory: ${{ env.BUILD_PATH }}
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.3
