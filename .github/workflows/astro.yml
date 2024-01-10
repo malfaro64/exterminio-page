@@ -65,6 +65,8 @@ jobs:
           node-version: "20"
           cache: pnpm
           cache-dependency-path: ${{ env.BUILD_PATH }}/pnpm-lock.yaml
+      - name: Install pnpm
+        run: npm install -g pnpm
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
